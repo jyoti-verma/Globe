@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+</div>
+
+<script type="text/template" id="card-view">
+    <div class="card"  style="float:left;margin:20px;width: 18rem;">
+        <div class="card-header"><p><%= name %></p></div>
+        <div class="card-img-top">
+            <img src="<%= flag%>" width="285px;" height="150px;"></div>
+            <div class="card-body">
+             <p>Currency:<%= currencies[0].name %>,&nbsp;<%= currencies[0].code %>,(<%= currencies[0].symbol %>)</p>
+                 <p>languages:
+                  <% _.each(languages, function(lang, index) { %>
+                  <%= lang.name %>  
+                  <% }) %></p></div>
+             <div class="card-footer">
+               <a href="http://maps.google.com/?q=<%= latlng[0] %>,<%= latlng[1] %>"><button>Map</button></a>
+              <button id="detailview" data-toggle="modal" data-target=".bd-example-modal-lg">history</button>
+             </div>
+    </div>
+</script>
+
+<script type= "text/template" id="list-view-template">
+</script>
+
+<div class="detail"></div>
+<script type="text/template" id="deatil-view">
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-lg">
+         <div class="modal-content">
+              <div class="card">
+                <div class="card-header">
+                    <h5>
+                     <span id="country-name"><%= name %></span>
+                   </h5>
+                    </div>
+                     <div class="card-img-top">
+                       <img src="<%= flag %>" width="285px;" height="150px;">
+                    </div>
+               <div class="card-details-list">
+              <ul class="list-group">
+          <li class="list-group-item"><strong>Capital: </strong><%= capital %></li>
+         <li class="list-group-item"><strong>Region: </strong><%= region %></li>
+         <li class="list-group-item"><strong>Subregion: </strong><%= subregion %></li>
+        <li class="list-group-item"><strong>Currency: </strong><%= currencies[0].name %></li>
+         <li class="list-group-item"><strong>Languages: </strong>
+          <% _.each(languages, function(lang){ %>
+                         <%= lang.name %>
+                  <% }) %>
+                     </li>
+     <li class="list-group-item"><strong>Native Name: </strong><%= nativeName %></li>
+     <li class="list-group-item"><strong>Calling Codes: </strong><%= callingCodes %></li>
+     <li class="list-group-item"><strong>Area: </strong><%= area %></li>
+         <li class="list-group-item"><strong>Population: </strong><%= population %></li>
+            </ul>
+         </div>
+            </div>
+              </div>
+            </div>
+          </div>
+</script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.4.0/backbone-min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="app.js"></script>
+</body>
+</html>
