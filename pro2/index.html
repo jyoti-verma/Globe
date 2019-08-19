@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Globe</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+</head>
+<body>
+<div id="mainPanel" class="container-fluid">
+         <nav class="navbar navbar-dark bg-dark">
+                <span class="navbar-brand mb-0 h1"><h2>Globe</h2></span>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" id="myInput" aria-label="Search">
+                   <button type="submit" style="display: none;"><i class="fa fa-search"></i></button>
+                  </form>
+              </nav>
+ </div>
+
+ <script type="text/template" id="list-template">
+        
+ </script>
+
+<script type="text/template" id="card-view">
+  <div class=" container-fluid"  id="myTable">
+      <div class=" col-sm-12 col-md-6 col-lg-4 col-xl-3 card divRow" style="width:300px;">
+          <div class="card-header">
+              <strong><%= country.name %></strong> 
+              (<%= country.capital %>)
+              </div>
+      <div class="flag-wrapper" >
+         <img class="card-img-top" src='<%= country.flag %>'  alt="Country image"  height="200px" >
+        </div>
+        <div class="card-body">
+            <strong>Currencies:</strong>
+          
+            <%= country.currencies[0].name %>(<%= country.currencies[0].code %>)<%= country.currencies[0].symbol %><br>
+            <p class="card-text">
+                    <% _.each(country.languages, function(lang, index) { %>
+                    <%= lang.name %>  
+                    <% }) %>
+                </p><br>
+  </div>
+</div>
+</script>
+     <!--modal -->
+     <script type="text/template" id="detail-view">
+        <div class="card-footer">
+                <a href="https://www.google.com/maps/search/?api=1&query=<%= country.latlng[0] %>,<%= country.latlng[1] %>" target="blank">
+                    <button><i class="fa fa-location-arrow"></i></button></a>
+     
+                    <button style="margin-left:20px"><i class="fa fa-history"  data-toggle="modal" data-target=".bd-example-modal-lg"></i></button></div>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+            <div class="card" id="details-card">
+                    <div class="card-header">
+                        <h5>
+                            <span id="back" class="pull-left btn"><i class="fas fa-arrow-left"></i></span>
+                    
+                            <span id="country-name"><%= country.name %></span>
+                        </h5>
+                    </div>
+                    <div id="" class="card-img-top">
+                        <img src="<%= country.flag %>" alt="" class="">
+                    </div>
+                    <div class="card-details-list">
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>Capital: </strong><%= country.capital %></li>
+                            <li class="list-group-item"><strong>Region: </strong><%= country.region %></li>
+                            <li class="list-group-item"><strong>Subregion: </strong><%= country.subregion %></li>
+                            <li class="list-group-item"><strong>Currency: </strong><%= country.currencies[0].name %></li>
+                            <li class="list-group-item"><strong>Languages: </strong>
+                                <% _.each(country.languages, function(lang){ %>
+                                    <%= lang.name %>
+                                <% }) %>
+                            </li>
+                            <li class="list-group-item"><strong>Native Name: </strong><%= country.nativeName %></li>
+                            <li class="list-group-item"><strong>Calling Codes: </strong><%= country.callingCodes %></li>
+                            <li class="list-group-item"><strong>Area: </strong><%= country.area %></li>
+                            <li class="list-group-item"><strong>Population: </strong><%= country.population %></li>
+                        </ul>
+                    </div>
+                </div>
+    </div>
+  </div>
+  </div>
+  </script>
+  <!--model-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.4.0/backbone-min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="app2.js"></script>
+</body>
+</html>

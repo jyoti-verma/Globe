@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <script src="lib/modernizr-2.6.2.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </head>
+    <body>
+      
+     <table class="table">
+         <thead>
+             <tr>
+                 <th>Author</th>
+                 <th>Title</th>
+                 <th>URL</th>
+                 <th>Action</th>
+             </tr>
+             <tr>
+                 <td><input type="text" class="form-control author-input"></td>
+                 <td><input type="text" class="form-control title-input"></td>
+                 <td><input type="text" class="form-control url-input"></td>
+                 <td><button class="btn btn-primary add-blog">Add</button></td>
+             </tr>
+         </thead>
+         <tbody class="blog-list"></tbody>
+     </table>
+
+     <script type="text/template" class="blog-list-tamplate">
+        <td><span class="author"><%= author %></span></td>
+        <td><span class="title"><%= title %></span></td>
+        <td><span class="url"><%= url %></span></td>
+        <td><button class="btn btn-warning edit-blog">Edit</button>
+        <button class="btn btn-danger delete-blog">Delete</button>
+        <button class="btn btn-success update-blog" style="display:none">Update</button>
+        <button class="btn btn-danger cancel-blog" style="display:none">Cancel</button></td>
+     
+     </script>
+
+     <script src="lib/underscore-min.js"></script>
+        <script src="lib/handlebars-v4.1.2.js"></script>
+        <script src="lib/jquery-min.js"></script>
+        <script src="lib/backbone-min.js"></script>
+        <script src="fetch.js"></script>
+       
+    </body>
+</html>

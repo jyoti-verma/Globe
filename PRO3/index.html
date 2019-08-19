@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" href="style.css">
+   </head>
+   <body style="background-color:whitesmoke">
+      <!--navbar-->
+      <section id="navView">
+         <script type="text/template" id="nav-view">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <h2 style="color: hsla(0,0%,100%,.8)">BookLibrary</h2>&nbsp;&nbsp;
+                <button class="btn btn-outline-success my-2 my-sm-0 addBook" type="submit" id="add-new-book" 
+                style="background-color: #28a745; color:hsla(0,0%,100%,.8)"   data-toggle="modal" data-target="#exampleModal">AddNewBook</button>
+                <div class="dropdown show">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #28a745; color:hsla(0,0%,100%,.8)">
+                         CATEGORY OF BOOKS
+                        </a>
+                        <div class="dropdown-menu" style="background-color:whitesmoke" aria-labelledby="dropdownMenuLink">
+                          <a class="dropdown-item" id="category1">Programming Languages</a>
+                          <a class="dropdown-item">Stories</a>
+                          <a class="dropdown-item">History</a>
+                          <a class="dropdown-item" id="category2">Graph</a>
+                        </div>
+                      </div>
+            </nav>
+         </script>
+      </section>
+      <!--navbar-->
+      <!--Graph-->
+      <script type="text/template" id="graph-view">
+         <div id="chartContainer" style="height: 700px; width: 100%;"></div>
+         </div>
+      </script>
+      <!--Graph-->
+      <!--Book-->
+      <div class="container" id="books-container">
+      </div>
+      <script type="text/template" id="card-view">
+         <div class="card" style="width: 20rem;">
+             <img class="card-img-top" src="<%= book.image%>" alt="Card image cap" height="250px;" 
+             data-toggle="modal" data-target="#exampleModal" id="imgClick">
+              
+         <div class="card-body"  style="background-color:lightblue;">
+             <h2 class="card-title name"><%= book.bookName%></h2>
+             <h5 class="card-text author"><%= book.bookAuthor%></h5>
+             <p class="card-text type"><%= book.bookType%></p>
+             <button class="btn btn-outline-success my-2 my-sm-0 " type="submit" id="remove-book" style="background-color: #28a745;color:hsla(0,0%,100%,.8)">RemoveBook</button>
+             <button class="btn btn-outline-success my-2 my-sm-0 " type="submit" id="edit-book"  style="background-color: #28a745;color:hsla(0,0%,100%,.8)"
+               data-toggle="modal" data-target="#exampleModal">EditBook</button>
+         </div>
+         </div>
+      </script>
+      <script type="text/template" id="book-list"></script>
+      <!--Book-->
+      <!--FormView-->
+      <div class="imgBox"></div>
+      <script type="text/template" id="add-book">
+
+         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ADD New Book</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               <form> 
+                  <div class="form-group ">
+                      <label for="BookName">BookName</label>
+                      <input type="text" class="form-control" id="BookName" required>
+                      <div><p style="color:red;font-size:20px">Field Required</p></div>
+                  </div>
+                  <div class="form-group ">
+                      <label for="BookAuthor">BookAuthor</label>
+                       <input type="text" class="form-control" id="BookAuthor">
+                       <div><p style="color:red;font-size:20px">Field Required</p></div>
+                  </div>
+                  <div class="form-group ">
+                      <label for="BookType">BookType</label>
+                      <input type="text" class="form-control" id="BookType">
+                      <div><p style="color:red;font-size:20px">Field Required</p></div>
+                  </div>
+                  <div class="input-group mb-2">
+                  <input type="file">
+                  <div>
+                     <p style="color:red;font-size:20px">Field Required</p>
+                  </div>
+                   </div>
+                      <button type="submit" class="btn btn-primary " id="add-book">&nbsp;&nbsp; AddBook &nbsp;&nbsp;</button>
+                      <button type="submit" class="btn btn-primary " id="update-book">UpdateBook</button>
+                      <div id="msg"><p style="color:green;font-size:20px">Book Add Successfully</p></div>
+                  </form>                 
+            </div>
+            </div>
+            </div>
+        </div>
+       
+      </script>
+      <!--FormView-->
+      <!--imageClickView-->
+      <div class="imgBox"></div>
+      <script type="text/template" id="img-click">
+         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+              <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"><%= book.bookName%></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <img class="card-img-top" src="<%= book.image%>" alt="Card image cap">
+              </div>
+              </div>
+              </div>
+          </div>
+      </script>
+      <!--imageClickView-->
+      <!--Scripts-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.4.0/backbone-min.js"></script>
+      <script src="app.js"></script>
+      <script src="https://canvasjs.com/assets/script/jquery-ui.1.11.2.min.js"></script>
+      <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+         crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+         crossorigin="anonymous"></script>
+      <!--Scripts-->
+   </body>
+</html>
