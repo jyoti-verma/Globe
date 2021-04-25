@@ -1,3 +1,3 @@
 #Specify a base image
-From niginx:alpine
-COPY . /usr/nginx/html
+FROM nginx:alpine
+COPY . /usr/share/nginx/html
